@@ -6,7 +6,12 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'button-detail',
     template: `
-  <button class="ml-3" (click)="selectInvoice()">View</button>
+  <button class="ml-3" (click)="selectInvoice()"
+   style="border: 1px solid black;
+  background-color: black;
+  width: 55px;
+  color: white;
+  font-weight: 500;">View</button>
     `,
 })
 export class ButtonDetailComponent implements ViewCell, OnInit {

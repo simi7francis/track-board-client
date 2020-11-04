@@ -20,7 +20,7 @@ import { ButtonDetailComponent } from './button-details.component';
 export class EmployeeListComponent implements OnInit {
 
   Employee: any = [];
-  allUsers:any=[];
+  allUsers: any = [];
 
   constructor(private apiService: ApiService, protected formBuilder: FormBuilder,
     private _router: Router, private loginService: LoginServiceService) {
@@ -31,12 +31,15 @@ export class EmployeeListComponent implements OnInit {
     this.getAllUsers()
   }
   public source = new LocalDataSource();
- public settings = {
+  public settings = {
     hideSubHeader: true,
     actions: {
       delete: false,
       edit: false,
       add: false
+    },
+    attr: {
+      class: 'table table-bordered'
     },
     edit: {
       editButtonContent: 'Edit',
@@ -69,7 +72,7 @@ export class EmployeeListComponent implements OnInit {
       },
       viewDetail: {
         title: "Detail",
-        type: "custom", 
+        type: "custom",
         renderComponent: ButtonDetailComponent
       },
     }
@@ -79,13 +82,12 @@ export class EmployeeListComponent implements OnInit {
       this.Employee = data;
       console.log(this.Employee)
       this.Employee.forEach(ele => {
-        
-          this.allUsers.push({
-            userId: ele.userId,
-            role: ele.role,
-            id:ele.id
-          })
-       
+
+        this.allUsers.push({
+          userId: ele.userId,
+          role: ele.role,
+          id: ele.id
+        })
       });
       console.log(this.allUsers)
       this.source.load(this.allUsers)

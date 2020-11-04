@@ -1,10 +1,10 @@
-import {ActivatedRoute, Router} from '@angular/router';
-import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {LoginServiceService} from '../app-component/login-service.service';
-import {LocalDataSource} from 'ng2-smart-table';
-import {DatePipe} from '@angular/common';
-import {AmazingTimePickerService} from 'amazing-time-picker';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { LoginServiceService } from '../app-component/login-service.service';
+import { LocalDataSource } from 'ng2-smart-table';
+import { DatePipe } from '@angular/common';
+import { AmazingTimePickerService } from 'amazing-time-picker';
 
 
 @Component({
@@ -104,6 +104,9 @@ export class EmployeeCreateComponent implements OnInit {
       delete: false,
       edit: false,
       add: false
+    },
+    attr: {
+      class: 'table table-bordered'
     },
     edit: {
       editButtonContent: 'Edit',
