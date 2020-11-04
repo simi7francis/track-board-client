@@ -1,14 +1,10 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../service/api.service';
-import { Component, OnInit, NgZone } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { LoginServiceService } from '../app-component/login-service.service';
-import { LocalDataSource, Ng2SmartTableModule } from 'ng2-smart-table';
-import { DatePipe } from '@angular/common';
-import { AmazingTimePickerService } from 'amazing-time-picker';
-import { DatepickerOptions } from 'ng2-datepicker';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { config } from 'process';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {LoginServiceService} from '../app-component/login-service.service';
+import {LocalDataSource} from 'ng2-smart-table';
+import {DatePipe} from '@angular/common';
+import {AmazingTimePickerService} from 'amazing-time-picker';
 
 
 @Component({
@@ -20,12 +16,10 @@ import { config } from 'process';
 export class EmployeeCreateComponent implements OnInit {
   submitted = false;
   scheduleForm: FormGroup;
-  EmployeeProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin']
   private _id: any;
   data: any;
   allretailer: any = [];
   retailerDate: any = [];
-  public options: DatepickerOptions;
   products: any = [];
   allselectedRetailer: any = [];
   selectedOutTime = '00:00';
@@ -40,13 +34,6 @@ export class EmployeeCreateComponent implements OnInit {
     private _router: Router,
     private loginService: LoginServiceService
   ) {
-    this.options = {
-      minYear: 1970,
-      maxYear: 2030,
-      displayFormat: 'DD-MM-YYYY',
-      barTitleFormat: 'MMMM YYYY',
-      firstCalendarDay: 0 // 0 - Sunday, 1 - Monday
-    };
 
     this._activatedRoute.params.subscribe(params => {
       this._id = params.id;
@@ -81,6 +68,7 @@ export class EmployeeCreateComponent implements OnInit {
       outTime: ["", Validators.required],
     });
   }
+
   openOutTimeDialog() {
     const amazingTimePicker = this.atp.open({
       time: this.selectedOutTime,
@@ -94,6 +82,7 @@ export class EmployeeCreateComponent implements OnInit {
       this.selectedOutTime = time;
     });
   }
+
   openInTimeDialog() {
     const amazingTimePicker = this.atp.open({
       time: this.selectedInTime,
@@ -168,7 +157,9 @@ export class EmployeeCreateComponent implements OnInit {
 
 
   };
-  ngOnInit() { }
+
+  ngOnInit() {
+  }
 
   parseTime(t) {
     var d = new Date();
@@ -194,6 +185,7 @@ export class EmployeeCreateComponent implements OnInit {
     this.theDate = new Date(event);
     console.log(this.theDate)
   }
+
   onSubmit() {
     var inTimeDate = this.parseTime(this.selectedInTime);
     var outTimeDate = this.parseTime(this.selectedOutTime);
@@ -203,20 +195,21 @@ export class EmployeeCreateComponent implements OnInit {
     this.loginService.createSchedule(builtInTime, builtOutTime, retailer_name, this._id).subscribe(result => {
       console.log(result)
       this.allretailer = [result];
-            console.log(result)
-            this.allretailer.forEach(ele => {
-              this.allselectedRetailer.push({
-                retailer_name: ele.retailer_name,
-                in_time: ele.in_time,
-                out_time: ele.out_time,
-                executive_id: ele.executive_id
-              })
+      console.log(result)
+      this.allretailer.forEach(ele => {
+        this.allselectedRetailer.push({
+          retailer_name: ele.retailer_name,
+          in_time: ele.in_time,
+          out_time: ele.out_time,
+          executive_id: ele.executive_id
+        })
 
-            });
-            console.log(this.allselectedRetailer)
-            this.source.load(this.allselectedRetailer)
+      });
+      console.log(this.allselectedRetailer)
+      this.source.load(this.allselectedRetailer)
     })
   }
+
   // onSubmit() {
   //   this.submitted = true;
   //   if (!this.employeeForm.valid) {

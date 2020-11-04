@@ -24,7 +24,6 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
     ReactiveFormsModule,
     Ng2SmartTableModule,
     AmazingTimePickerModule,
-    NgDatepickerModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
     DpDatePickerModule,
@@ -44,12 +43,8 @@ import { LoginComponent } from './components/login/login.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ButtonDetailComponent } from './components/employee-list/button-details.component';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
-import { NgDatepickerModule } from "ng2-datepicker";
-import { DatepickerOptions } from 'ng2-datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DpDatePickerModule } from 'ng2-date-picker';
-// import { NgDatepickerModule } from 'ng2-datepicker/dist/src/ng-datepicker/module/ng-datepicker.module';
-
 
