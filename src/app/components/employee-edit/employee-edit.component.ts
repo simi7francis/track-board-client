@@ -1,8 +1,8 @@
-import { Employee } from './../../model/Employee';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { ApiService } from './../../service/api.service';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {Employee} from '../../model/employee';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {ApiService} from '../../service/api.service';
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 
 @Component({
@@ -22,7 +22,8 @@ export class EmployeeEditComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private apiService: ApiService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.updateEmployee();
