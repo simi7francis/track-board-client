@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class LoginServiceService {
-  readonly baseURL = 'track-board-server.herokuapp.com';
+  readonly baseURL = 'http://track-board-server.herokuapp.com';
   constructor(private http: HttpClient) { }
   checkLoginCredentials(user) {
     console.log(user)
