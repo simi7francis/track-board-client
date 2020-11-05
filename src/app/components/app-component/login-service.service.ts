@@ -24,16 +24,4 @@ export class LoginServiceService {
   createSchedule(in_time, out_time, retailer_name, executive_id) {
     return this.http.post(this.baseURL + "/api/v1/schedules", { executive_id, retailer_name, in_time, out_time });
   }
-
-  // getEmployeeList() {
-  //   return this.http.get(this.baseURL);
-  // }
-
-  // putEmployee(emp: Employee) {
-  //   return this.http.put(this.baseURL + `/${emp._id}`, emp);
-  // }
-
-  // deleteEmployee(_id: string) {
-  //   return this.http.delete(this.baseURL + `/${_id}`);
-  // }
 }

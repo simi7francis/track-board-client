@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from './../../service/api.service';
+import {Component, OnInit} from '@angular/core';
 
-import { LocalDataSource, Ng2SmartTableModule } from 'ng2-smart-table';
+import {LocalDataSource} from 'ng2-smart-table';
 
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { LoginServiceService } from '../app-component/login-service.service';
-import { ButtonDetailComponent } from './button-details.component';
-//import { ButtonViewDetailComponent } from './button-details.component';
+import {Router} from '@angular/router';
+import {FormBuilder} from '@angular/forms';
+import {LoginServiceService} from '../app-component/login-service.service';
+import {ButtonDetailComponent} from './button-details.component';
+
 
 @Component({
   selector: 'app-employee-list',
@@ -22,14 +21,14 @@ export class EmployeeListComponent implements OnInit {
   Employee: any = [];
   allUsers: any = [];
 
-  constructor(private apiService: ApiService, protected formBuilder: FormBuilder,
-    private _router: Router, private loginService: LoginServiceService) {
-    // this.readEmployee();
+  constructor(protected formBuilder: FormBuilder,
+              private _router: Router, private loginService: LoginServiceService) {
   }
 
   ngOnInit() {
     this.getAllUsers()
   }
+
   public source = new LocalDataSource();
   public settings = {
     hideSubHeader: true,
@@ -77,6 +76,7 @@ export class EmployeeListComponent implements OnInit {
       },
     }
   };
+
   getAllUsers() {
     this.loginService.getAllUsers().subscribe((data) => {
       this.Employee = data;
@@ -94,14 +94,5 @@ export class EmployeeListComponent implements OnInit {
       console.log(data)
     })
   }
-
-  // removeEmployee(employee, index) {
-  //   if(window.confirm('Are you sure?')) {
-  //     this.apiService.deleteEmployee(employee._id).subscribe((data) => {
-  //         this.Employee.splice(index, 1);
-  //       }
-  //     )
-  //   }
-  // }
 
 }
